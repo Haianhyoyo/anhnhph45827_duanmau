@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 15, 2024 lúc 02:00 AM
+-- Thời gian đã tạo: Th1 25, 2024 lúc 09:53 AM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.0.30
 
@@ -144,6 +144,7 @@ CREATE TABLE `sale` (
   `gia` decimal(10,2) NOT NULL,
   `mota` text NOT NULL,
   `hinhanh` varchar(225) NOT NULL,
+  `iddm` tinyint(1) NOT NULL,
   `sale` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -151,11 +152,11 @@ CREATE TABLE `sale` (
 -- Đang đổ dữ liệu cho bảng `sale`
 --
 
-INSERT INTO `sale` (`ID`, `tensanpham`, `gia`, `mota`, `hinhanh`, `sale`) VALUES
-(1, 'Đầm Midi ', 339.50, 'Đầm Midi Nữ Kẻ Sọc Tà Lệch Thắt Dây Form Straight', 'sale1.jpg', 0),
-(2, 'Áo Khoác Chần Bông Nam', 547.50, 'Áo Khoác Chần Bông Nam Phối Màu Form Regular', 'sale2.jpg', 0),
-(3, 'Áo Khoác Bomber', 315.00, 'Áo Khoác Bomber Nam Kẻ Sọc Form Regular ', 'sale3.jpg', 0),
-(4, 'Áo Khoác Nữ Kiểu Xếp Ly', 390.00, 'Áo Khoác Nữ Kiểu Xếp Ly Sau Form Regular', 'sale4.jpg', 0);
+INSERT INTO `sale` (`ID`, `tensanpham`, `gia`, `mota`, `hinhanh`, `iddm`, `sale`) VALUES
+(1, 'Đầm Midi ', 339.50, 'Đầm Midi Nữ Kẻ Sọc Tà Lệch Thắt Dây Form Straight', 'sale1.jpg', 0, 0),
+(2, 'Áo Khoác Chần Bông Nam', 547.50, 'Áo Khoác Chần Bông Nam Phối Màu Form Regular', 'sale2.jpg', 0, 0),
+(3, 'Áo Khoác Bomber', 315.00, 'Áo Khoác Bomber Nam Kẻ Sọc Form Regular ', 'sale3.jpg', 0, 0),
+(4, 'Áo Khoác Nữ Kiểu Xếp Ly', 390.00, 'Áo Khoác Nữ Kiểu Xếp Ly Sau Form Regular', 'sale4.jpg', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -166,10 +167,11 @@ INSERT INTO `sale` (`ID`, `tensanpham`, `gia`, `mota`, `hinhanh`, `sale`) VALUES
 CREATE TABLE `sanpham` (
   `ID` int(11) NOT NULL,
   `TenSanPham` varchar(255) NOT NULL,
-  `Gia` decimal(10,2) NOT NULL,
+  `Gia` varchar(100) NOT NULL,
   `MoTa` text DEFAULT NULL,
   `HinhAnh` varchar(255) DEFAULT NULL,
   `bestseller` tinyint(1) NOT NULL,
+  `iddm` tinyint(1) NOT NULL,
   `DanhMucID` int(11) DEFAULT NULL,
   `ThuongHieuID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -178,13 +180,13 @@ CREATE TABLE `sanpham` (
 -- Đang đổ dữ liệu cho bảng `sanpham`
 --
 
-INSERT INTO `sanpham` (`ID`, `TenSanPham`, `Gia`, `MoTa`, `HinhAnh`, `bestseller`, `DanhMucID`, `ThuongHieuID`) VALUES
-(1, 'Áo Sweater Nam Basic Cổ Tròn', 540.00, 'Chất vải cotton dày dặn nhưng vẫn thoáng mát, mềm mịn, có khả năng giữ ấm cho cơ thể', 'anh1.webp', 0, 1, 1),
-(2, 'Áo Len Polo Nam Dệt Kim Tay Ngắn ', 569.00, 'Áo Len Polo Nam Dệt Kim Tay Ngắn Cotton Phối Túi Form Boxy ', 'anh2.webp', 0, 2, 2),
-(3, 'Áo Len Nam Cardigan Tay Dài Cotton', 687.00, 'Áo Len Nam Cardigan Tay Dài Cotton Cổ V Trơn Form Loose', 'anh3.webp', 0, 3, 3),
-(4, 'Áo Khoác Chần Bông Nam Cổ Cao ', 490.00, 'Chất vải bề mặt là nylon bền, nhẹ, cản gió và chống thấm nước tốt', 'anh4.webp', 0, 4, 4),
-(5, 'men', 1.00, 'men', 'men.jpg', 1, 5, 5),
-(6, 'women', 1.00, 'women', 'women.jpg', 2, 6, 6);
+INSERT INTO `sanpham` (`ID`, `TenSanPham`, `Gia`, `MoTa`, `HinhAnh`, `bestseller`, `iddm`, `DanhMucID`, `ThuongHieuID`) VALUES
+(1, 'Áo Sweater Nam Basic Cổ Tròn', '441.000 ₫', 'Chất vải cotton dày dặn nhưng vẫn thoáng mát, mềm mịn, có khả năng giữ ấm cho cơ thể', 'anh1.webp', 0, 1, 1, 1),
+(2, 'Áo Len Polo Nam Dệt Kim Tay Ngắn ', '490.000 ₫', 'Áo Len Polo Nam Dệt Kim Tay Ngắn Cotton Phối Túi Form Boxy ', 'anh2.webp', 0, 2, 2, 2),
+(3, 'Áo Len Nam Cardigan Tay Dài Cotton', '520.000 ₫', 'Áo Len Nam Cardigan Tay Dài Cotton Cổ V Trơn Form Loose', 'anh3.webp', 0, 3, 3, 3),
+(4, 'Áo Khoác Chần Bông Nam Cổ Cao ', '540.000 ₫', 'Chất vải bề mặt là nylon bền, nhẹ, cản gió và chống thấm nước tốt', 'anh4.webp', 0, 4, 4, 4),
+(5, 'men', '687.000 ₫', 'men', 'men.jpg', 1, 5, 5, 5),
+(6, 'women', '589.000 ₫', 'women', 'women.jpg', 2, 6, 6, 6);
 
 -- --------------------------------------------------------
 
@@ -198,6 +200,7 @@ CREATE TABLE `sanphamtop` (
   `gia` decimal(10,2) NOT NULL,
   `mota` text NOT NULL,
   `hinhanh` varchar(225) NOT NULL,
+  `iddm` tinyint(1) NOT NULL,
   `top` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -205,11 +208,11 @@ CREATE TABLE `sanphamtop` (
 -- Đang đổ dữ liệu cho bảng `sanphamtop`
 --
 
-INSERT INTO `sanphamtop` (`ID`, `tensanpham`, `gia`, `mota`, `hinhanh`, `top`) VALUES
-(1, 'Áo Sweater Nữ Rộng Tay Dài Cổ Tròn', 540.00, '\r\nÁo Sweater Nữ Rộng Tay Dài Cổ Tròn In Hình Form Loose - 10F23SWEW003', 'anh1top.jpg', 1),
-(2, 'Áo Len Nữ Dệt Kim', 490.00, 'Áo Len Nữ Dệt Kim Tay Dài Cotton Cổ V Form Regular - 10F23KNIW003', 'anh2top.jpg', 2),
-(3, 'Áo Blazer Nữ', 883.00, 'Áo Blazer Nữ Lửng Tay Ngắn Vải Tweed Form Regular Cropped', 'anh3top.jpg', 3),
-(4, 'Áo Khoác Nữ Sát Nách', 981.00, 'Áo Khoác Nữ Sát Nách Thắt Eo Trơn Form Straight', 'anh4top.jpg', 4);
+INSERT INTO `sanphamtop` (`ID`, `tensanpham`, `gia`, `mota`, `hinhanh`, `iddm`, `top`) VALUES
+(1, 'Áo Sweater Nữ Rộng Tay Dài Cổ Tròn', 540.00, '\r\nÁo Sweater Nữ Rộng Tay Dài Cổ Tròn In Hình Form Loose - 10F23SWEW003', 'anh1top.jpg', 0, 1),
+(2, 'Áo Len Nữ Dệt Kim', 490.00, 'Áo Len Nữ Dệt Kim Tay Dài Cotton Cổ V Form Regular - 10F23KNIW003', 'anh2top.jpg', 0, 2),
+(3, 'Áo Blazer Nữ', 883.00, 'Áo Blazer Nữ Lửng Tay Ngắn Vải Tweed Form Regular Cropped', 'anh3top.jpg', 0, 3),
+(4, 'Áo Khoác Nữ Sát Nách', 981.00, 'Áo Khoác Nữ Sát Nách Thắt Eo Trơn Form Straight', 'anh4top.jpg', 0, 4);
 
 -- --------------------------------------------------------
 
