@@ -38,11 +38,14 @@ function get_sp_women($limi)
     $sql = "SELECT * FROM sanpham WHERE bestseller=2 ORDER BY id DESC limit " . $limi;
     return pdo_query($sql);
 }
-function get_dssp($iddm, $limi)
+function get_dssp($kyw, $iddm, $limi)
 {
     $sql = "SELECT * FROM sanpham WHERE 1";
     if ($iddm > 0) {
         $sql .= " AND iddm= " . $iddm;
+    }
+    if ($kyw != "") {
+        $sql .= " AND TenSanPham like '%" . $kyw . "%'";
     }
     $sql .= " ORDER BY id DESC limit " . $limi;
     return pdo_query($sql);
@@ -71,16 +74,23 @@ function showsp($sp_new)
                             <div class="product-block">
                                 <div class="product-img"><a href="' . $link . '"><img src="layout/images/' . $HinhAnh . '" alt="" class="img-responsive"></a></div>
                                 <div class="product-content">
-                                    <h4 class="product-title"><a href="#">Zima leto</a></h4>
+                                    <h4 class="product-title"><a href="#">' . $TenSanPham . '</a></h4>
                                     <p class="product-text">Solid A-Line Dress</p>
                                     <p class="product-price">' . $Gia . '</p>
-                                    <div class="product-links">
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <form action="index.php?page=addcart" method="post">
+                                            <input type="hidden" name="name" value="' . $TenSanPham . '">
+                                            <input type="hidden" name="img" value="' . $HinhAnh . '">
+                                            <input type="hidden" name="price" value="' . $Gia . '">
+                                            <input type="hidden" name="soluong" value="1">
+                                        <div class="product-links">
+                                            <ul>
+                                            <button type="submit" name="addcart">
+                                                <li><a href="index.php?page=addcart"><i class="fa fa-shopping-cart"></i></a></li>
+                                            </button>
+                                            </ul>
+                                        </div>
+                                    </form>
+                                   
                                 </div>
                             </div>
                         </div>';

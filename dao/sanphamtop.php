@@ -33,3 +33,13 @@ function showsp_top($sp_top)
     }
     return $html_sp_top;
 }
+
+// function get_dssp($iddm, $limi)
+// {
+//     $sql = "SELECT * FROM sanpham WHERE 1";
+//     if ($iddm > 0) {
+//         $sql .= " AND iddm= " . $iddm;
+//     }
+//     $sql .= " ORDER BY id DESC limit " . $limi;
+//     return pdo_query($sql);
+// }

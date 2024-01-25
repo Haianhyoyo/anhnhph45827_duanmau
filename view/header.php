@@ -35,11 +35,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-offset-2 col-md-8 col-sm-offset-2 col-sm-8">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search for...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-primary" type="button">Go!</button>
-                            </span>
+                        <div class="input-group" action="index.php?page=sanpham" method="post">
+                            <form action="index.php?page=sanpham" method="post">
+                                <input type="text" name="kyw" class="form-control" placeholder="Search for...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" name="timkiem" type="button">Go!</button>
+                                </span>
+                            </form>
                         </div>
                         <!-- /input-group -->
                     </div>

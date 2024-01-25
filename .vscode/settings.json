@@ -1,9 +1,15 @@
 {
     "cSpell.words": [
+        "addcart",
         "Danh",
         "danhmuc",
         "dsdm",
         "dssp",
+        "dụng",
+        "giảm",
+        "giatrivoucher",
+        "giohang",
+        "gioithieu",
         "Hàng",
         "Hinh",
         "hinhanh",
@@ -11,13 +17,24 @@
         "iddm",
         "idpro",
         "lienquan",
+        "Lượng",
+        "mavoucher",
         "phẩm",
+        "phiếu",
+        "sanh",
+        "sánh",
         "sanpham",
         "sanphamchitiet",
         "showdm",
+        "soluong",
         "spchitiet",
         "splienquan",
+        "thanhtoan",
+        "Tien",
+        "timkiem",
         "tmdtyao",
-        "Tshirts"
+        "tongdonhang",
+        "Tshirts",
+        "viewcart"
     ]
 }

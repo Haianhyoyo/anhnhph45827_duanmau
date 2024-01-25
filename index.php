@@ -1,10 +1,17 @@
 <?php
+session_start();
+ob_start();
+if (!isset($_SESSION["giohang"])) {
+    $_SESSION["giohang"] = [];
+}
+
 //nhung ket noi csdl
 include "dao/pdo.php";
 include "dao/danhmuc.php";
 include "dao/sanpham.php";
 include "dao/sanphamtop.php";
 include "dao/sale.php";
+include "dao/giohang.php";
 
 
 include "view/header.php";
@@ -28,7 +35,17 @@ if (!isset($_GET['page'])) {
             } else {
                 $iddm = $_GET['iddm'];
             }
-            $dssp = get_dssp($iddm, 6);
+
+            // kiem tra  co phai form seach khong
+            if (isset($_POST['timkiem']) && ($_POST['timkiem'])) {
+                $kyw = $_POST["kyw"];
+                // $title = "Kết quả tìm kiếm:" . $kyw;
+            } else {
+                $kyw = "";
+                // $title = "";
+            }
+
+            $dssp = get_dssp($kyw, $iddm, 6);
 
             include "view/sanpham.php";
             break;
@@ -44,10 +61,46 @@ if (!isset($_GET['page'])) {
             } else {
                 include "view/home.php";
             }
-
-
             break;
 
+        case 'addcart':
+            if (isset($_POST["name"])) {
+                $TenSanPham = $_POST["name"];
+                $HinhAnh = $_POST["img"];
+                $Gia = $_POST["price"];
+                $SoLuong = $_POST["soluong"];
+                $sp = array("name" => $TenSanPham, "img" => $HinhAnh, "price" => $Gia, "soluong" => $SoLuong);
+                array_push($_SESSION["giohang"], $sp);
+                // echo var_dump($_SESSION["giohang"]);
+                header('location: index.php?page=viewcart');
+            }
+            // include 'view/addcart.php';
+            break;
+
+
+        case 'viewcart':
+            if (isset($_GET['del']) && ($_GET['del'] == 1)) {
+                unset($_SESSION['giohang']);
+                header('location: index.php');
+            } else {
+                if (isset($_SESSION["giohang"])) {
+                    $tongdonhang = get_tongdonhang();
+                }
+                $giatrivoucher = 0;
+                if (isset($_GET['voucher']) && ($_GET['voucher'] == 1)) {
+                    $tongdonhang = $_POST['tongdonhang'];
+                    $mavoucher = $_POST['mavoucher'];
+                    // so sánh db để lấy giá trị về
+                    $giatrivoucher = 10;
+                }
+                $thanhtoan = $tongdonhang - $giatrivoucher;
+                include 'view/viewcart.php';
+            }
+            break;
+
+        case 'gioithieu':
+            include 'view/gioithieu.php';
+            break;
         default:
             include "view/home.php";
             break;

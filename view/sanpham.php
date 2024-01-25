@@ -3,9 +3,10 @@ $html_dm = showdm($dsdm);
 $html_dssp = '';
 foreach ($dssp as $sp) {
     extract($sp);
+    $link = "index.php?page=sanphamchitiet&idpro=" . $ID;
     $html_dssp .= '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <div class="product-block">
-                            <div class="product-img"><a href="#"><img src="layout/images/' . $HinhAnh . '" alt="" class="img-responsive"></a></div>
+                            <div class="product-img"><a href="' . $link . '"><img src="layout/images/' . $HinhAnh . '" alt="" class="img-responsive"></a></div>
                             <div class="product-content">
                                 <h4 class="product-title"><a href="#">Zima leto</a></h4>
                                 <p class="product-text">Solid A-Line Dress</p>
@@ -21,6 +22,8 @@ foreach ($dssp as $sp) {
                         </div>
                     </div>';
 }
+// if ($title != "") $title = $title;
+// else $title = "Sản Phẩm";
 ?>
 <div class="page-header">
     <div class="container">
