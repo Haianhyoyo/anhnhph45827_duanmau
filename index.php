@@ -7,6 +7,7 @@ if (!isset($_SESSION["giohang"])) {
 
 //nhung ket noi csdl
 include "dao/pdo.php";
+include "dao/user.php";
 include "dao/danhmuc.php";
 include "dao/sanpham.php";
 include "dao/sanphamtop.php";
@@ -97,6 +98,28 @@ if (!isset($_GET['page'])) {
                 include 'view/viewcart.php';
             }
             break;
+
+
+        case 'adduser':
+            // xác định giá trị đầu vào
+            if (isset($_POST['dangky']) && $_POST['dangky']) {
+                $username = $_POST['name'];
+                $phone = $_POST['phone'];
+                $email = $_POST['email'];
+                $password = $_POST['password'];
+                // xử lý
+                user_insert($username, $phone,  $email, $password);
+            }
+            include 'view/dangky&dangnhap.php';
+            break;
+        case 'dangky':
+            include 'view/dangky.php';
+            break;
+
+        case 'dangnhap':
+            include 'view/dangnhap.php';
+            break;
+
 
         case 'gioithieu':
             include 'view/gioithieu.php';

@@ -63,9 +63,9 @@
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="top-nav">
                         <ul>
-                            <li><a href="#">My Account </a></li>
+                            <li><a href="index.php?page=account">My Account</a></li>
                             <li> | </li>
-                            <li><a href="#">Register</a></li>
+                            <li><a href="index.php?page=dangky">Đăng kí</a></li>
                             <li> <a role="button" data-toggle="collapse" href="#search-area" aria-expanded="false" aria-controls="search-area"> <i class="fa fa-search"></i> </a> </li>
                         </ul>
                     </div>
