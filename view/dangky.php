@@ -62,8 +62,8 @@
                         <form action="index.php?page=adduser" method="post">
                             <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">
                                 <div class="form-group">
-                                    <label class="control-label required" for="name"> Name<sup style="color:red">*</sup></label>
-                                    <input id="name" name="name" type="text" class="form-control" placeholder="Enter Your NAme">
+                                    <label class="control-label required" for="username"> Name<sup style="color:red">*</sup></label>
+                                    <input id="username" name="username" type="text" class="form-control" placeholder="Enter Your NAme">
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-12 col-sm-6 col-xs-12">

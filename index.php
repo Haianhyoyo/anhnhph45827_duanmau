@@ -102,20 +102,23 @@ if (!isset($_GET['page'])) {
 
         case 'adduser':
             // xác định giá trị đầu vào
-            if (isset($_POST['dangky']) && $_POST['dangky']) {
-                $username = $_POST['name'];
-                $phone = $_POST['phone'];
-                $email = $_POST['email'];
-                $password = $_POST['password'];
+            if (isset($_POST["dangky"]) && ($_POST["dangky"])) {
+                $username = $_POST["username"];
+                $phone = $_POST["phone"];
+                $email = $_POST["email"];
+                $password = $_POST["password"];
                 // xử lý
                 user_insert($username, $phone,  $email, $password);
             }
-            include 'view/dangky&dangnhap.php';
-            break;
-        case 'dangky':
             include 'view/dangky.php';
             break;
 
+            // case 'dangky':
+            //     include 'view/dangky.php';
+            //     break;
+        case 'dangky':
+            include 'view/dangky.php';
+            break;
         case 'dangnhap':
             include 'view/dangnhap.php';
             break;

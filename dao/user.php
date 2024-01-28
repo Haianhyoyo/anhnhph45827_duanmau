@@ -3,7 +3,7 @@ require_once 'pdo.php';
 
 function user_insert($username, $phone,  $email, $password)
 {
-    $sql = "INSERT INTO user(name, phone, email, password) VALUES (?, ?, ?, ?)";
+    $sql = "INSERT INTO user(username, phone, email, password) VALUES (?, ?, ?, ?)";
     pdo_execute($sql, $username, $phone,  $email, $password);
 }
 
