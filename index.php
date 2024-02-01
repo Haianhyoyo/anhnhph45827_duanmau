@@ -102,7 +102,7 @@ if (!isset($_GET['page'])) {
 
         case 'adduser':
             // xác định giá trị đầu vào
-            if (isset($_POST["dangky"]) && ($_POST["dangky"])) {
+            if (isset($_POST["dangky"])) {
                 $username = $_POST["username"];
                 $phone = $_POST["phone"];
                 $email = $_POST["email"];
@@ -112,14 +112,36 @@ if (!isset($_GET['page'])) {
             }
             include 'view/dangky.php';
             break;
-
-            // case 'dangky':
-            //     include 'view/dangky.php';
-            //     break;
         case 'dangky':
             include 'view/dangky.php';
             break;
+
+
+        case 'login':
+            // input
+            if (isset($_POST["dangnhap"])) {
+                $email = $_POST["email"];
+                $password = $_POST["password"];
+
+                // xl: kiem tra
+                $checkuser = checkuser($email, $password);
+                if ($checkuser > 0) {
+                    $_SESSION["iduser"] = $checkuser;
+                    header('location: index.php');
+                } else {
+                    $tb = "Tài khoản không tồn tại hoặc thông tin nhập sai";
+                    $_SESSION['tb_dangnhap'] = $tb;
+                    include 'view/dangnhap.php';
+                    unset($_SESSION['tb_dangnhap']);
+                    // header('location: index.php?page=dangnhap');
+                }
+                //out
+            }
+            break;
         case 'dangnhap':
+            if (isset($_SESSION['tb_dangnhap'])) {
+                unset($_SESSION['tb_dangnhap']);
+            }
             include 'view/dangnhap.php';
             break;
 

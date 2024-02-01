@@ -2,6 +2,7 @@
     "cSpell.words": [
         "addcart",
         "adduser",
+        "checkuser",
         "dangky",
         "dangnhap",
         "Danh",
@@ -19,6 +20,9 @@
         "idchitiet",
         "iddm",
         "idpro",
+        "iduser",
+        "khoản",
+        "không",
         "lienquan",
         "Lượng",
         "mavoucher",
@@ -38,6 +42,7 @@
         "tmdtyao",
         "tongdonhang",
         "Tshirts",
+        "txttb",
         "viewcart"
     ]
 }

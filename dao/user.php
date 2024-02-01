@@ -3,10 +3,19 @@ require_once 'pdo.php';
 
 function user_insert($username, $phone,  $email, $password)
 {
-    $sql = "INSERT INTO user(username, phone, email, password) VALUES (?, ?, ?, ?)";
-    pdo_execute($sql, $username, $phone,  $email, $password);
+    $sql = "INSERT INTO user(username, phone, email, password) VALUES ('" . $username . "', '" . $phone . "', '" . $email . "', '" . $password . "')";
+    pdo_execute($sql);
 }
-
+function  checkuser($email, $password)
+{
+    $sql = "SELECT ID FROM user WHERE email=? AND password=?";
+    $kq = pdo_query_one($sql, $email, $password);
+    if (is_array($kq) && (count($kq))) {
+        return $kq = $kq["ID"];
+    } else {
+        return 0;
+    }
+}
 // function khach_hang_update($ma_kh, $mat_khau, $ho_ten, $email, $hinh, $kich_hoat, $vai_tro){
 //     $sql = "UPDATE khach_hang SET mat_khau=?,ho_ten=?,email=?,hinh=?,kich_hoat=?,vai_tro=? WHERE ma_kh=?";
 //     pdo_execute($sql, $mat_khau, $ho_ten, $email, $hinh, $kich_hoat==1, $vai_tro==1, $ma_kh);

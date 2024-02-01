@@ -63,7 +63,7 @@
                 <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="top-nav">
                         <ul>
-                            <li><a href="index.php?page=dangnhap">My Account</a></li>
+                            <li><a href="index.php?page=dangnhap">Đăng nhập</a></li>
                             <li> | </li>
                             <li><a href="index.php?page=dangky">Đăng ký</a></li>
                             <li> <a role="button" data-toggle="collapse" href="#search-area" aria-expanded="false" aria-controls="search-area"> <i class="fa fa-search"></i> </a> </li>
